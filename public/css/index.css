@@ -1,0 +1,10 @@
+/* Paleta de colores para velas */
+:root {
+    --candle-primary: #8B7355;
+    --candle-secondary: #C4A484;
+    --candle-accent: #D4AF37;
+    --candle-light: #FFF8F0;
+    --candle-dark: #5D4037;
+    --candle-muted: #8D6E63;
+}
+
