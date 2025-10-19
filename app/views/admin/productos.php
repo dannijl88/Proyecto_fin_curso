@@ -19,8 +19,14 @@ include '../app/views/layouts/header.php';
                     <a href="<?= BASE_URL ?>?c=admin&a=productos" class="list-group-item list-group-item-action active">
                         🕯️ Gestión de Productos
                     </a>
+                    <a href="<?= BASE_URL ?>?c=admin&a=pedidos" class="list-group-item list-group-item-action">
+                        📦 Gestión de Pedidos
+                    </a>
                     <a href="<?= BASE_URL ?>?c=admin&a=nuevoProducto" class="list-group-item list-group-item-action">
                         ➕ Nuevo Producto
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=categoria&a=index" class="list-group-item list-group-item-action">
+                        📁 Gestión de Categorías
                     </a>
                     <a href="<?= BASE_URL ?>?c=producto" class="list-group-item list-group-item-action">
                         👁️ Ver Tienda
@@ -121,9 +127,9 @@ include '../app/views/layouts/header.php';
                                         <td>
                                             <div class="btn-group btn-group-sm">
                                                 <a href="<?= BASE_URL ?>?c=admin&a=editarProducto&id=<?= $producto['id'] ?>" 
-                                            class="btn btn-outline-primary" title="Editar">
-                                                ✏️
-                                            </a>
+                                                class="btn btn-outline-primary" title="Editar">
+                                                    ✏️
+                                                </a>
                                                 <a href="<?= BASE_URL ?>?c=producto&a=ver&id=<?= $producto['id'] ?>" 
                                                 class="btn btn-outline-info" title="Ver">
                                                     👁️

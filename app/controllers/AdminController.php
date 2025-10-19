@@ -2,12 +2,14 @@
 class AdminController {
     private $productoModel;
     private $usuarioModel;
+    private $pedidoModel;
     
     public function __construct() {
         // Verificar que es admin
         UsuarioController::requireAdmin();
         
         $this->productoModel = new ProductoModel();
+        $this->pedidoModel = new PedidoModel();
     }
     
     public function index() {
@@ -183,5 +185,71 @@ private function subirImagen() {
     }
     
     return null;
+}
+
+public function pedidos() {
+    $pedidos = $this->pedidoModel->getAllPedidos();
+    $estadisticas = $this->pedidoModel->getEstadisticas();
+    
+    $data = [
+        'title' => 'Gestión de Pedidos',
+        'pedidos' => $pedidos,
+        'estadisticas' => $estadisticas
+    ];
+    
+    require_once __DIR__ . '/../views/admin/pedidos.php';
+}
+
+public function detallePedido() {
+    $pedido_id = $_GET['id'] ?? null;
+    
+    if (!$pedido_id) {
+        header('Location: ' . BASE_URL . '?c=admin&a=pedidos');
+        exit;
+    }
+    
+    $pedido = $this->pedidoModel->getPedidoById($pedido_id);
+    $lineas_pedido = $this->pedidoModel->getLineasPedido($pedido_id);
+    
+    if (!$pedido) {
+        $_SESSION['error'] = 'Pedido no encontrado';
+        header('Location: ' . BASE_URL . '?c=admin&a=pedidos');
+        exit;
+    }
+    
+    $data = [
+        'title' => 'Detalle Pedido #' . $pedido_id,
+        'pedido' => $pedido,
+        'lineas_pedido' => $lineas_pedido
+    ];
+    
+    require_once __DIR__ . '/../views/admin/detalle_pedido.php';
+}
+
+public function actualizarEstadoPedido() {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header('Location: ' . BASE_URL . '?c=admin&a=pedidos');
+        exit;
+    }
+    
+    $pedido_id = $_POST['pedido_id'] ?? null;
+    $estado = $_POST['estado'] ?? null;
+    
+    if (!$pedido_id || !$estado) {
+        $_SESSION['error'] = 'Datos incompletos';
+        header('Location: ' . BASE_URL . '?c=admin&a=pedidos');
+        exit;
+    }
+    
+    $resultado = $this->pedidoModel->actualizarEstado($pedido_id, $estado);
+    
+    if ($resultado['success']) {
+        $_SESSION['mensaje'] = '✅ Estado del pedido actualizado correctamente';
+    } else {
+        $_SESSION['error'] = $resultado['error'] ?? 'Error al actualizar estado';
+    }
+    
+    header('Location: ' . BASE_URL . '?c=admin&a=pedidos');
+    exit;
 }
 }

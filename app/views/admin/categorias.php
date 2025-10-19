@@ -6,9 +6,39 @@ include __DIR__ . '/../layouts/header.php';
 
 <div class="container-fluid py-4">
     <div class="row">
-        <div class="col-12">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🛠️ Panel de Control</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="<?= BASE_URL ?>?c=admin" class="list-group-item list-group-item-action">
+                        📊 Dashboard
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=admin&a=productos" class="list-group-item list-group-item-action">
+                        🕯️ Gestión de Productos
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=admin&a=pedidos" class="list-group-item list-group-item-action">
+                        📦 Gestión de Pedidos
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=admin&a=nuevoProducto" class="list-group-item list-group-item-action">
+                        ➕ Nuevo Producto
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=categoria&a=index" class="list-group-item list-group-item-action active">
+                        📁 Gestión de Categorías
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=producto" class="list-group-item list-group-item-action">
+                        👁️ Ver Tienda
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="col-md-9" style="min-height: 78vh;">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1>Gestión de Categorías</h1>
+                <h1 class="h3 mb-0">Gestión de Categorías</h1>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearCategoria">
                     + Nueva Categoría
                 </button>

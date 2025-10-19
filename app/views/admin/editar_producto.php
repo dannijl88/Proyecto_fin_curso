@@ -20,8 +20,14 @@ include '../app/views/layouts/header.php';
                     <a href="<?= BASE_URL ?>?c=admin&a=productos" class="list-group-item list-group-item-action">
                         🕯️ Gestión de Productos
                     </a>
+                    <a href="<?= BASE_URL ?>?c=admin&a=pedidos" class="list-group-item list-group-item-action">
+                        📦 Gestión de Pedidos
+                    </a>
                     <a href="<?= BASE_URL ?>?c=admin&a=nuevoProducto" class="list-group-item list-group-item-action">
                         ➕ Nuevo Producto
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=categoria&a=index" class="list-group-item list-group-item-action">
+                        📁 Gestión de Categorías
                     </a>
                     <a href="<?= BASE_URL ?>?c=producto" class="list-group-item list-group-item-action">
                         👁️ Ver Tienda
@@ -30,7 +36,7 @@ include '../app/views/layouts/header.php';
             </div>
         </div>
         
-        <div class="col-md-9">
+        <div class="col-md-9" style="min-height: 78vh;">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="h3 mb-0">Editar Producto</h1>
                 <a href="<?= BASE_URL ?>?c=admin&a=productos" class="btn btn-outline-secondary">
@@ -48,7 +54,7 @@ include '../app/views/layouts/header.php';
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre del Producto *</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" 
-                                           value="<?= htmlspecialchars($producto['nombre']) ?>" required>
+                                        value="<?= htmlspecialchars($producto['nombre']) ?>" required>
                                 </div>
                                 
                                 <div class="mb-3">
@@ -61,14 +67,14 @@ include '../app/views/layouts/header.php';
                                         <div class="mb-3">
                                             <label for="precio" class="form-label">Precio (€) *</label>
                                             <input type="number" class="form-control" id="precio" name="precio" 
-                                                   step="0.01" min="0" value="<?= $producto['precio'] ?>" required>
+                                                step="0.01" min="0" value="<?= $producto['precio'] ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="stock" class="form-label">Stock *</label>
                                             <input type="number" class="form-control" id="stock" name="stock" 
-                                                   min="0" value="<?= $producto['stock'] ?>" required>
+                                                min="0" value="<?= $producto['stock'] ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +105,7 @@ include '../app/views/layouts/header.php';
                                 <div class="mb-3">
                                     <label for="imagen" class="form-label">Imagen del Producto</label>
                                     <input type="file" class="form-control" id="imagen" name="imagen" 
-                                           accept="image/*">
+                                        accept="image/*">
                                     <div class="form-text">Dejar vacío para mantener la imagen actual</div>
                                 </div>
                                 

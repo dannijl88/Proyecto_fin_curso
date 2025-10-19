@@ -261,4 +261,19 @@ public function getRelacionados($categoria_id, $producto_id_actual, $limite = 4)
         return [];
     }
 }
+
+public function actualizarStock($producto_id, $cantidad) {
+    try {
+        $stmt = $this->db->prepare("
+            UPDATE productos 
+            SET stock = stock + ? 
+            WHERE id = ?
+        ");
+        $stmt->execute([$cantidad, $producto_id]);
+        return ['success' => true];
+    } catch (PDOException $e) {
+        error_log("Error en actualizarStock: " . $e->getMessage());
+        return ['success' => false, 'error' => $e->getMessage()];
+    }
+}
 }

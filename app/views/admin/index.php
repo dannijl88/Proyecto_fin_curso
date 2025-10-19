@@ -3,7 +3,7 @@ $title = $data['title'] ?? 'Admin Panel';
 include '../app/views/layouts/header.php'; 
 ?>
 
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 ">
     <div class="row">
         <div class="col-md-3">
             <!-- Sidebar -->
@@ -12,11 +12,14 @@ include '../app/views/layouts/header.php';
                     <h5 class="mb-0">🛠️ Panel de Control</h5>
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="<?= BASE_URL ?>?c=admin" class="list-group-item list-group-item-action active">
+                    <a href="<?= BASE_URL ?>?c=admin" class="list-group-item list-group-item-action">
                         📊 Dashboard
                     </a>
                     <a href="<?= BASE_URL ?>?c=admin&a=productos" class="list-group-item list-group-item-action">
                         🕯️ Gestión de Productos
+                    </a>
+                    <a href="<?= BASE_URL ?>?c=admin&a=pedidos" class="list-group-item list-group-item-action">
+                        📦 Gestión de Pedidos
                     </a>
                     <a href="<?= BASE_URL ?>?c=admin&a=nuevoProducto" class="list-group-item list-group-item-action">
                         ➕ Nuevo Producto
@@ -31,7 +34,7 @@ include '../app/views/layouts/header.php';
             </div>
         </div>
         
-        <div class="col-md-9">
+        <div class="col-md-9" style="min-height: 78vh;">
             <!-- Contenido principal -->
             <h1 class="h3 mb-4">Dashboard de Administración</h1>
             

@@ -65,10 +65,14 @@ class PedidoController {
         }
         
         // Crear pedido
+        require_once __DIR__ . '/../models/ProductoModel.php';
+        $productoModel = new ProductoModel();
+
         $resultado = $this->pedidoModel->crearPedido(
             $_SESSION['usuario']['id'],
             $datos_envio,
-            $carrito
+            $carrito,
+            $productoModel  // ← Añadir este parámetro
         );
         
         if ($resultado['success']) {
