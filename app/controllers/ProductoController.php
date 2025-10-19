@@ -61,26 +61,34 @@ class ProductoController {
 }
     
     public function ver() {
-        $id = $_GET['id'] ?? null;
-        
-        if (!$id) {
-            header('Location: ' . BASE_URL . '?c=producto');
-            exit;
-        }
-        
-        $producto = $this->productoModel->getById($id);
-        
-        if (!$producto) {
-            die("Producto no encontrado");
-        }
-        
-        $data = [
-            'title' => $producto['nombre'],
-            'producto' => $producto
-        ];
-        
-        require_once __DIR__ . '/../views/productos/ver.php';
+    $id = $_GET['id'] ?? null;
+    
+    if (!$id) {
+        header('Location: ' . BASE_URL . '?c=producto');
+        exit;
     }
+    
+    $producto = $this->productoModel->getById($id);
+    
+    if (!$producto) {
+        die("Producto no encontrado");
+    }
+    
+    // Obtener productos relacionados
+    $productosRelacionados = $this->productoModel->getRelacionados(
+        $producto['categoria_id'], 
+        $id, 
+        4 
+    );
+    
+    $data = [
+        'title' => $producto['nombre'],
+        'producto' => $producto,
+        'productosRelacionados' => $productosRelacionados
+    ];
+    
+    require_once __DIR__ . '/../views/productos/ver.php';
+}
 
     public function destacados() {
         // Productos más vendidos o mejor valorados

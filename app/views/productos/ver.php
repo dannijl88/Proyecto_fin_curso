@@ -107,10 +107,6 @@ if (!$producto): ?>
                                     <?= $producto['stock'] <= 0 ? 'disabled' : '' ?>>
                                 <?= $producto['stock'] > 0 ? '🛒 Añadir al carrito' : 'Producto agotado' ?>
                             </button>
-                            
-                            <button type="button" class="btn btn-outline-secondary btn-lg">
-                                ❤️ Favorito
-                            </button>
                         </div>
                     </form>
                 </div>
@@ -135,15 +131,68 @@ if (!$producto): ?>
             </div>
         </div>
 
-        <!-- Productos relacionados (podemos implementar después) -->
-        <div class="row mt-5">
-            <div class="col-12">
-                <h3 class="h4 mb-4">Productos relacionados</h3>
-                <div class="alert alert-info">
-                    <p class="mb-0">Aquí irán los productos relacionados de la misma categoría.</p>
+        <!-- Productos relacionados -->
+                <?php if (!empty($productosRelacionados)): ?>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="h4 mb-4">Productos relacionados</h3>
+                        <div class="row">
+                            <?php foreach ($productosRelacionados as $relacionado): ?>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="card h-100 product-card">
+                                    <!-- Imagen del producto -->
+                                    <a href="<?= BASE_URL ?>?c=producto&a=ver&id=<?= $relacionado['id'] ?>">
+                                        <img src="/images/productos/<?= $relacionado['imagen'] ?>" 
+                                            class="card-img-top" 
+                                            alt="<?= htmlspecialchars($relacionado['nombre']) ?>"
+                                            style="height: 200px; object-fit: cover;">
+                                    </a>
+                                    
+                                    <div class="card-body d-flex flex-column">
+                                        <!-- Categoría -->
+                                        <span class="badge bg-secondary mb-2"><?= htmlspecialchars($relacionado['categoria_nombre']) ?></span>
+                                        
+                                        <!-- Nombre -->
+                                        <h5 class="card-title">
+                                            <a href="<?= BASE_URL ?>?c=producto&a=ver&id=<?= $relacionado['id'] ?>" 
+                                            class="text-decoration-none text-dark">
+                                                <?= htmlspecialchars($relacionado['nombre']) ?>
+                                            </a>
+                                        </h5>
+                                        
+                                        <!-- Precio -->
+                                        <div class="price-section mt-auto">
+                                            <p class="h5 text-primary mb-1">€<?= number_format($relacionado['precio'], 2) ?></p>
+                                            <?php if($relacionado['oferta'] == 'SI'): ?>
+                                                <small class="text-muted text-decoration-line-through">€<?= number_format($relacionado['precio'] * 1.2, 2) ?></small>
+                                                <span class="badge bg-success ms-1">20% OFF</span>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <!-- Stock -->
+                                        <small class="text-muted mt-2">
+                                            <?php if($relacionado['stock'] > 0): ?>
+                                                <span class="text-success">✓ En stock</span>
+                                            <?php else: ?>
+                                                <span class="text-danger">✗ Agotado</span>
+                                            <?php endif; ?>
+                                        </small>
+                                        
+                                        <!-- Botón rápido -->
+                                        <div class="mt-3">
+                                            <a href="<?= BASE_URL ?>?c=producto&a=ver&id=<?= $relacionado['id'] ?>" 
+                                            class="btn btn-outline-primary btn-sm w-100">
+                                                Ver detalles
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+<?php endif; ?>
     </section>
 <?php endif; ?>
 

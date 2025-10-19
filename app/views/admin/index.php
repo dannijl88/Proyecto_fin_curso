@@ -90,7 +90,7 @@ include '../app/views/layouts/header.php';
                                     <td><?= $producto['stock'] ?></td>
                                     <td>
                                         <a href="<?= BASE_URL ?>?c=admin&a=editarProducto&id=<?= $producto['id'] ?>" 
-                                           class="btn btn-sm btn-outline-primary">Editar</a>
+                                        class="btn btn-sm btn-outline-primary">Editar</a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

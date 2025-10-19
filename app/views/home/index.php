@@ -4,22 +4,15 @@ include '../app/views/layouts/header.php';
 ?>
 
 <!-- Hero Section Mejorado -->
-<section class="hero bg-dark text-white py-5 mb-5" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/hero-bg.jpg'); background-size: cover; background-position: center;">
+<section class="hero bg-dark text-white py-5 mb-5">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <header>
-                    <h1 class="display-4 fw-bold">Ilumina Tus Momentos</h1>
-                    <p class="lead fs-5">Velas artesanales con esencias únicas que transforman tus espacios en santuarios de paz y armonía</p>
-                </header>
-                <div class="mt-4">
-                    <a href="<?= BASE_URL ?>?c=producto" class="btn btn-primary btn-lg me-3">Explorar Colección</a>
-                    <a href="#ofertas" class="btn btn-outline-light btn-lg">Ver Ofertas</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center">
-                <img src="/images/hero-candle.png" alt="Vela artesanal" class="img-fluid" style="max-height: 400px;">
-            </div>
+        <header>
+            <h1 class="display-4 fw-bold">Ilumina Tus Momentos</h1>
+            <p class="lead fs-5">Velas artesanales con esencias únicas que transforman tus espacios en santuarios de paz y armonía</p>
+        </header>
+        <div class="mt-4">
+            <a href="<?= BASE_URL ?>?c=producto" class="btn btn-primary btn-lg me-3">Explorar Colección</a>
+            <a href="#ofertas" class="btn btn-outline-light btn-lg">Ver Ofertas</a>
         </div>
     </div>
 </section>
@@ -139,7 +132,7 @@ include '../app/views/layouts/header.php';
 </section>
 
 <!-- Newsletter -->
-<section class="newsletter py-5 bg-primary text-white">
+<section class="newsletter py-5 bg-secondary text-white">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">

@@ -227,4 +227,27 @@ public function getOfertas($limite = 4) {
         return [];
     }
 }
+
+public function getRelacionados($categoria_id, $producto_id_actual, $limite = 4) {
+    try {
+        $stmt = $this->db->prepare("
+            SELECT p.*, c.nombre as categoria_nombre 
+            FROM productos p 
+            INNER JOIN categorias c ON p.categoria_id = c.id 
+            WHERE p.categoria_id = ? 
+            AND p.id != ? 
+            AND p.stock > 0 
+            ORDER BY RAND() 
+            LIMIT ?
+        ");
+        $stmt->bindValue(1, $categoria_id, PDO::PARAM_INT);
+        $stmt->bindValue(2, $producto_id_actual, PDO::PARAM_INT);
+        $stmt->bindValue(3, $limite, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        error_log("Error en getRelacionados: " . $e->getMessage());
+        return [];
+    }
+}
 }

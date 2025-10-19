@@ -39,7 +39,7 @@ include '../app/views/layouts/header.php';
     </aside>
                         
     <!-- Grid de productos -->
-    <section class="catalogo ">
+    <section class="catalogo" style="min-height: 50vh;">
         <?php if (empty($productos)): ?>
             <article class="col-12">
                 <div class="alert alert-warning text-center">
