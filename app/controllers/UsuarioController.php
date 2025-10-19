@@ -26,7 +26,6 @@ class UsuarioController {
         require_once __DIR__ . '/../views/usuarios/registro.php';
     }
 
-    // En UsuarioController.php - añade este método
     public static function isAdmin() {
         return isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] === 'admin';
     }

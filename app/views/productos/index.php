@@ -181,7 +181,7 @@ function filtrarProductosLocalmente(query) {
     });
 }
 
-// Búsqueda en servidor (más preciso pero requiere recarga)
+// Búsqueda en servidor
 function buscarEnServidor(query) {
     $.ajax({
         url: '<?= BASE_URL ?>?c=producto&a=buscar',

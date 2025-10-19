@@ -19,7 +19,6 @@ class CategoriaController {
             'categorias' => $categorias
         ];
         
-        // CAMBIO: Archivo plano en admin
         require_once __DIR__ . '/../views/admin/categorias.php';
     }
     
@@ -78,7 +77,6 @@ class CategoriaController {
             'categoria' => $categoria
         ];
         
-        // CAMBIO: Archivo plano en admin
         require_once __DIR__ . '/../views/admin/editar_categoria.php';
     }
     

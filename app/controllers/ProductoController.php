@@ -12,7 +12,7 @@ class ProductoController {
     
     public function index() {
     $pagina = $_GET['pagina'] ?? 1;
-    $productosPorPagina = 9; // 3x3 grid
+    $productosPorPagina = 9;
     
     $resultado = $this->productoModel->getPaginated($pagina, $productosPorPagina);
     $categorias = $this->productoModel->getCategorias();
@@ -41,7 +41,6 @@ class ProductoController {
         exit;
     }
     
-    // Necesitarías un método getPaginatedByCategoria en el modelo
     $productos = $this->productoModel->getByCategoria($categoria_id);
     $categorias = $this->productoModel->getCategorias();
     

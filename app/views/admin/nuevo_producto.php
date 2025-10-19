@@ -7,7 +7,7 @@ include '../app/views/layouts/header.php';
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-md-3">
-            <!-- Sidebar (mismo que en productos.php) -->
+            <!-- Sidebar -->
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">🛠️ Panel de Control</h5>

@@ -8,7 +8,6 @@ class AdminController {
         UsuarioController::requireAdmin();
         
         $this->productoModel = new ProductoModel();
-        // Podemos crear más modelos después (CategoriaModel, etc.)
     }
     
     public function index() {
@@ -70,8 +69,6 @@ class AdminController {
         require_once __DIR__ . '/../views/admin/nuevo_producto.php';
     }
 
-    // En AdminController.php - añade después de nuevoProducto()
-
 public function guardarProducto() {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         header('Location: ' . BASE_URL . '?c=admin&a=productos');
@@ -132,6 +129,33 @@ public function actualizarProducto() {
         $_SESSION['mensaje'] = '✅ Producto actualizado exitosamente';
     } else {
         $_SESSION['error'] = $resultado['error'];
+    }
+    
+    header('Location: ' . BASE_URL . '?c=admin&a=productos');
+    exit;
+}
+
+public function eliminarProducto() {
+    // Verificar si es POST para seguridad
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header('Location: ' . BASE_URL . '?c=admin&a=productos');
+        exit;
+    }
+    
+    $id = $_POST['id'] ?? null;
+    
+    if (!$id) {
+        $_SESSION['error'] = 'ID de producto no válido';
+        header('Location: ' . BASE_URL . '?c=admin&a=productos');
+        exit;
+    }
+    
+    $resultado = $this->productoModel->eliminar($id);
+    
+    if ($resultado['success']) {
+        $_SESSION['mensaje'] = '✅ Producto eliminado correctamente';
+    } else {
+        $_SESSION['error'] = $resultado['error'] ?? 'Error al eliminar producto';
     }
     
     header('Location: ' . BASE_URL . '?c=admin&a=productos');

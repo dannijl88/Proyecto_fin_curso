@@ -40,12 +40,12 @@ include '../app/views/layouts/header.php';
                                             <div class="col-md-2">
                                                 <?php if(!empty($producto['imagen'])): ?>
                                                 <img src="/images/productos/<?= $producto['imagen'] ?>" 
-                                                     alt="<?= htmlspecialchars($producto['nombre']) ?>"
-                                                     class="img-fluid rounded" 
-                                                     style="width: 80px; height: 80px; object-fit: cover;">
+                                                    alt="<?= htmlspecialchars($producto['nombre']) ?>"
+                                                    class="img-fluid rounded" 
+                                                    style="width: 80px; height: 80px; object-fit: cover;">
                                                 <?php else: ?>
                                                 <div class="bg-light rounded d-flex align-items-center justify-content-center" 
-                                                     style="width: 80px; height: 80px;">
+                                                    style="width: 80px; height: 80px;">
                                                     🕯️
                                                 </div>
                                                 <?php endif; ?>
@@ -66,12 +66,12 @@ include '../app/views/layouts/header.php';
                                                             data-id="<?= $producto['id'] ?>" 
                                                             data-action="decrement">-</button>
                                                     <input type="number" 
-                                                           class="form-control text-center cantidad-input"
-                                                           value="<?= $producto['cantidad'] ?>" 
-                                                           min="1" 
-                                                           max="<?= $producto['stock'] ?>"
-                                                           data-id="<?= $producto['id'] ?>"
-                                                           data-precio="<?= $producto['precio'] ?>">
+                                                        class="form-control text-center cantidad-input"
+                                                        value="<?= $producto['cantidad'] ?>" 
+                                                        min="1" 
+                                                        max="<?= $producto['stock'] ?>"
+                                                        data-id="<?= $producto['id'] ?>"
+                                                        data-precio="<?= $producto['precio'] ?>">
                                                     <button class="btn btn-outline-secondary btn-update-cantidad" 
                                                             type="button" 
                                                             data-id="<?= $producto['id'] ?>" 
@@ -103,7 +103,7 @@ include '../app/views/layouts/header.php';
                                 <!-- Vaciar carrito -->
                                 <div class="card-footer">
                                     <form action="<?= BASE_URL ?>?c=carrito&a=vaciar" method="POST" 
-                                          onsubmit="return confirm('¿Estás seguro de que quieres vaciar el carrito?')">
+                                        onsubmit="return confirm('¿Estás seguro de que quieres vaciar el carrito?')">
                                         <button type="submit" class="btn btn-outline-danger btn-sm">
                                             🗑️ Vaciar Carrito
                                         </button>

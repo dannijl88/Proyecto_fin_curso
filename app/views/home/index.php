@@ -3,7 +3,7 @@ $title = $data['title'] ?? 'Tienda de Velas';
 include '../app/views/layouts/header.php'; 
 ?>
 
-<!-- Hero Section Mejorado -->
+<!-- Hero Section -->
 <section class="hero bg-dark text-white py-5 mb-5">
     <div class="container">
         <header>
@@ -67,7 +67,7 @@ include '../app/views/layouts/header.php';
         </header>
         
         <div class="row" id="featured-products-container">
-            <!-- Los productos se cargarán aquí via AJAX -->
+            <!-- Los productos via AJAX -->
             <div class="col-12 text-center">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Cargando productos...</span>
@@ -86,7 +86,7 @@ include '../app/views/layouts/header.php';
         </header>
         
         <div class="row" id="offers-container">
-            <!-- Las ofertas se cargarán aquí via AJAX -->
+            <!-- Las ofertas via AJAX -->
         </div>
     </div>
 </section>

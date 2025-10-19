@@ -53,7 +53,7 @@ include __DIR__ . '/../layouts/header.php';
                                         <td><?= htmlspecialchars($categoria['descripcion'] ?? '') ?></td>
                                         <td>
                                             <a href="<?= BASE_URL ?>?c=categoria&a=editar&id=<?= $categoria['id'] ?>" 
-                                               class="btn btn-sm btn-outline-primary">Editar</a>
+                                            class="btn btn-sm btn-outline-primary">Editar</a>
                                             <button onclick="confirmarEliminacion(<?= $categoria['id'] ?>, '<?= htmlspecialchars($categoria['nombre']) ?>')" 
                                                     class="btn btn-sm btn-outline-danger">Eliminar</button>
                                         </td>

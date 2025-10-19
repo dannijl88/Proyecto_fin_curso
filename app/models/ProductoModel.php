@@ -64,8 +64,6 @@ class ProductoModel {
         }
     }
 
-    // En ProductoModel.php - añade después de getCategorias()
-
     public function crear($datos) {
         try {
             $stmt = $this->db->prepare("
@@ -120,28 +118,43 @@ class ProductoModel {
     }
 
     public function eliminar($id) {
-        try {
-            // Primero obtener info de la imagen para borrarla del servidor
-            $producto = $this->getById($id);
-            
-            $stmt = $this->db->prepare("DELETE FROM productos WHERE id = ?");
-            $stmt->execute([$id]);
-            
-            // Si tenía imagen, borrarla
-            if ($producto && $producto['imagen']) {
-                $rutaImagen = __DIR__ . '/../../public/images/productos/' . $producto['imagen'];
-                if (file_exists($rutaImagen)) {
-                    unlink($rutaImagen);
-                }
-            }
-            
-            return ['success' => true];
-            
-        } catch (PDOException $e) {
-            error_log("Error en eliminar producto: " . $e->getMessage());
-            return ['success' => false, 'error' => 'Error al eliminar producto'];
+    try {
+        // Primero obtener info del producto
+        $producto = $this->getById($id);
+        
+        if (!$producto) {
+            return ['success' => false, 'error' => 'Producto no encontrado'];
         }
+        
+        // 1. PRIMERO eliminar las líneas de pedido relacionadas
+        $stmtLineas = $this->db->prepare("DELETE FROM lineas_pedidos WHERE producto_id = ?");
+        $stmtLineas->execute([$id]);
+        
+        // 2. LUEGO eliminar el producto
+        $stmt = $this->db->prepare("DELETE FROM productos WHERE id = ?");
+        $stmt->execute([$id]);
+        
+        $filasAfectadas = $stmt->rowCount();
+        
+        if ($filasAfectadas === 0) {
+            return ['success' => false, 'error' => 'No se pudo eliminar el producto'];
+        }
+        
+        // 3. FINALMENTE eliminar la imagen si existe
+        if ($producto['imagen']) {
+            $rutaImagen = __DIR__ . '/../../public/images/productos/' . $producto['imagen'];
+            if (file_exists($rutaImagen)) {
+                unlink($rutaImagen);
+            }
+        }
+        
+        return ['success' => true];
+        
+    } catch (PDOException $e) {
+        error_log("Error en eliminar producto: " . $e->getMessage());
+        return ['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()];
     }
+}
 
     // Paginación
     public function getPaginated($pagina = 1, $productosPorPagina = 9) {
@@ -187,8 +200,6 @@ class ProductoModel {
             ];
         }
     }
-
-    // Añade estos métodos a tu ProductoModel class:
 
 public function getDestacados($limite = 6) {
     try {

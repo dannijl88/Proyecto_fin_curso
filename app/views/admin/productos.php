@@ -37,6 +37,22 @@ include '../app/views/layouts/header.php';
                 </a>
             </div>
 
+            <?php if (isset($_SESSION['mensaje'])): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['mensaje'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <?php unset($_SESSION['mensaje']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['error'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <?php unset($_SESSION['error']); ?>
+            <?php endif; ?>
+
             <!-- Lista de productos -->
             <div class="card">
                 <div class="card-body">
@@ -74,7 +90,7 @@ include '../app/views/layouts/header.php';
                                                 class="rounded">
                                             <?php else: ?>
                                                 <div class="bg-light rounded d-flex align-items-center justify-content-center" 
-                                                     style="width: 50px; height: 50px;">
+                                                    style="width: 50px; height: 50px;">
                                                     🕯️
                                                 </div>
                                             <?php endif; ?>
@@ -109,7 +125,7 @@ include '../app/views/layouts/header.php';
                                                 ✏️
                                             </a>
                                                 <a href="<?= BASE_URL ?>?c=producto&a=ver&id=<?= $producto['id'] ?>" 
-                                                   class="btn btn-outline-info" title="Ver">
+                                                class="btn btn-outline-info" title="Ver">
                                                     👁️
                                                 </a>
                                                 <button class="btn btn-outline-danger" title="Eliminar" 
@@ -132,9 +148,20 @@ include '../app/views/layouts/header.php';
 
 <script>
 function confirmarEliminacion(id, nombre) {
-    if (confirm(`¿Estás seguro de que quieres eliminar el producto "${nombre}"?`)) {
-        // Aquí irá la lógica para eliminar
-        alert('Funcionalidad de eliminar pendiente - ID: ' + id);
+    if (confirm(`¿Estás seguro de que quieres eliminar el producto "${nombre}"?\n\nEsta acción no se puede deshacer.`)) {
+        // Crear formulario dinámico para enviar por POST
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '<?= BASE_URL ?>?c=admin&a=eliminarProducto';
+        
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'id';
+        input.value = id;
+        
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
     }
 }
 </script>

@@ -34,7 +34,7 @@ if (!$producto): ?>
                             style="max-height: 500px; object-fit: cover;">
                     </div>
                     
-                    <!-- Miniaturas (aquí podrías añadir más imágenes después) -->
+                    <!-- Miniaturas -->
                     <div class="thumbnails d-flex gap-2">
                         <img src="/images/productos/<?= $producto['imagen'] ?>" 
                             alt="<?= htmlspecialchars($producto['nombre']) ?>" 
