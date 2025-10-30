@@ -1,6 +1,6 @@
 <?php 
 $title = $data['title'] ?? 'Tienda de Velas';
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
 <!-- Hero Section -->
@@ -168,7 +168,7 @@ function cargarProductosDestacados() {
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100 shadow-sm">
                             ${producto.oferta === 'SI' ? '<span class="badge bg-danger position-absolute top-0 start-0 m-2">OFERTA</span>' : ''}
-                            <img src="/images/productos/${producto.imagen}" class="card-img-top" alt="${producto.nombre}" style="height: 200px; object-fit: cover;">
+                            <img src="<?= BASE_URL ?>/public/images/productos/${producto.imagen}" class="card-img-top" alt="${producto.nombre}" style="height: 200px; object-fit: cover;">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">${producto.nombre}</h5>
                                 <p class="card-text flex-grow-1">${producto.descripcion.substring(0, 100)}...</p>
@@ -202,7 +202,7 @@ function cargarOfertas() {
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100 shadow border-danger">
                             <span class="badge bg-danger position-absolute top-0 start-0 m-2">-20%</span>
-                            <img src="/images/productos/${producto.imagen}" class="card-img-top" alt="${producto.nombre}" style="height: 150px; object-fit: cover;">
+                            <img src="<?= BASE_URL ?>/public/images/productos/${producto.imagen}" class="card-img-top" alt="${producto.nombre}" style="height: 150px; object-fit: cover;">
                             <div class="card-body">
                                 <h6 class="card-title">${producto.nombre}</h6>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -225,4 +225,4 @@ function cargarOfertas() {
 }
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

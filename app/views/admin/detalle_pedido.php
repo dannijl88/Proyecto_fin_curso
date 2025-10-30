@@ -2,7 +2,7 @@
 $title = $data['title'] ?? 'Detalle del Pedido';
 $pedido = $data['pedido'] ?? null;
 $lineas_pedido = $data['lineas_pedido'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 
 if (!$pedido): ?>
     <div class="container-fluid py-4">
@@ -153,4 +153,4 @@ if (!$pedido): ?>
 </div>
 <?php endif; ?>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

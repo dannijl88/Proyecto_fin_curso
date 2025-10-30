@@ -2,10 +2,10 @@
 $title = $data['title'] ?? 'Registro';
 $error = $data['error'] ?? '';
 $form_data = $data['form_data'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
-<section class="registro py-5">
+<section class="registro py-5" style="min-height: 82vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -124,4 +124,4 @@ $(document).ready(function() {
 });
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

@@ -1,7 +1,7 @@
 <?php 
 $title = $data['title'] ?? 'Nuevo Producto';
 $categorias = $data['categorias'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
 <div class="container-fluid py-4" style="min-height: 82vh;">
@@ -149,4 +149,4 @@ function eliminarVistaPrevia() {
 }
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

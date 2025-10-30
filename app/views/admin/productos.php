@@ -1,7 +1,7 @@
 <?php 
 $title = $data['title'] ?? 'Gestión de Productos';
 $productos = $data['productos'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
 <div class="container-fluid py-4">
@@ -90,7 +90,7 @@ include '../app/views/layouts/header.php';
                                         <td><?= $producto['id'] ?></td>
                                         <td>
                                             <?php if($producto['imagen']): ?>
-                                                <img src="/images/productos/<?= $producto['imagen'] ?>"   
+                                                <img src="<?= BASE_URL ?>/public/images/productos/<?= $producto['imagen']?>"   
                                                 alt="<?= htmlspecialchars($producto['nombre']) ?>" 
                                                 style="width: 50px; height: 50px; object-fit: cover;" 
                                                 class="rounded">
@@ -172,4 +172,4 @@ function confirmarEliminacion(id, nombre) {
 }
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

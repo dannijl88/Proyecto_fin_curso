@@ -3,7 +3,7 @@ $title = $data['title'] ?? 'Productos';
 $productos = $data['productos'] ?? [];
 $categorias = $data['categorias'] ?? [];
 $categoria_actual = $data['categoria_actual'] ?? null;
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
 <section class="productos">
@@ -58,7 +58,7 @@ include '../app/views/layouts/header.php';
                         <?php endif; ?>
                         
                         <?php if($producto['imagen']): ?>
-                        <img src="/images/productos/<?= $producto['imagen']?>" 
+                        <img src="<?= BASE_URL ?>/public/images/productos/<?= $producto['imagen']?>" 
                             class="card-img-top" 
                             alt="<?= htmlspecialchars($producto['nombre']) ?>"
                             style="height: 200px; object-fit: cover;">
@@ -263,4 +263,4 @@ $(document).ready(function() {
 
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

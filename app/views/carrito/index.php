@@ -2,10 +2,10 @@
 $title = $data['title'] ?? 'Carrito de Compras';
 $carrito = $data['carrito'] ?? [];
 $productos = $data['productos'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
-<section class="carrito py-5">
+<section class="carrito py-5" style="min-height: 82vh;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -39,7 +39,7 @@ include '../app/views/layouts/header.php';
                                             <!-- Imagen -->
                                             <div class="col-md-2">
                                                 <?php if(!empty($producto['imagen'])): ?>
-                                                <img src="/images/productos/<?= $producto['imagen'] ?>" 
+                                                <img src="<?= BASE_URL ?>/public/images/productos/<?= $producto['imagen']?>" 
                                                     alt="<?= htmlspecialchars($producto['nombre']) ?>"
                                                     class="img-fluid rounded" 
                                                     style="width: 80px; height: 80px; object-fit: cover;">
@@ -254,4 +254,4 @@ $(document).ready(function() {
 });
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

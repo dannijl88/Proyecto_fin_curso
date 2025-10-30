@@ -23,7 +23,7 @@ class UsuarioController {
             }
         }
         
-        require_once __DIR__ . '/../views/usuarios/registro.php';
+        view('usuarios/registro', $data);
     }
 
     public static function isAdmin() {
@@ -71,7 +71,7 @@ class UsuarioController {
         }
     }
     
-    require_once __DIR__ . '/../views/usuarios/login.php';
+    view('usuarios/login', $data);
 }
     public function logout() {
         // Destruir sesión
@@ -94,7 +94,7 @@ class UsuarioController {
             'usuario' => $_SESSION['usuario']
         ];
         
-        require_once __DIR__ . '/../views/usuarios/perfil.php';
+        view('usuarios/perfil', $data);
     }
     
     private function procesarRegistro() {

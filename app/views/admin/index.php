@@ -1,6 +1,6 @@
 <?php 
 $title = $data['title'] ?? 'Admin Panel';
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
 <div class="container-fluid py-4 ">
@@ -106,4 +106,4 @@ include '../app/views/layouts/header.php';
     </div>
 </div>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

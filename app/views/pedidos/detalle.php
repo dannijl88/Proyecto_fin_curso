@@ -2,10 +2,10 @@
 $title = $data['title'] ?? 'Detalle del Pedido';
 $pedido = $data['pedido'] ?? [];
 $lineas_pedido = $data['lineas_pedido'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
-<section class="detalle-pedido py-5">
+<section class="detalle-pedido py-5" style="min-height: 82vh;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -66,13 +66,13 @@ include '../app/views/layouts/header.php';
                             <div class="row align-items-center">
                                 <div class="col-md-2">
                                     <?php if(!empty($linea['imagen'])): ?>
-                                    <img src="/images/productos/<?= $linea['imagen'] ?>" 
-                                         alt="<?= htmlspecialchars($linea['nombre']) ?>"
-                                         class="img-fluid rounded" 
-                                         style="width: 60px; height: 60px; object-fit: cover;">
+                                    <img src="<?= BASE_URL ?>/public/images/productos/<?= $linea['imagen'] ?>" 
+                                        alt="<?= htmlspecialchars($linea['nombre']) ?>"
+                                        class="img-fluid rounded" 
+                                        style="width: 60px; height: 60px; object-fit: cover;">
                                     <?php else: ?>
                                     <div class="bg-light rounded d-flex align-items-center justify-content-center" 
-                                         style="width: 60px; height: 60px;">
+                                        style="width: 60px; height: 60px;">
                                         🕯️
                                     </div>
                                     <?php endif; ?>
@@ -113,4 +113,4 @@ include '../app/views/layouts/header.php';
     </div>
 </section>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

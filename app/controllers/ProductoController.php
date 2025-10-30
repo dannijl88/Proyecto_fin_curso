@@ -28,7 +28,7 @@ class ProductoController {
         ]
     ];
     
-    require_once __DIR__ . '/../views/productos/index.php';
+    view('productos/index', $data);
 }
     
     public function categoria() {
@@ -56,7 +56,7 @@ class ProductoController {
         ]
     ];
     
-    require_once __DIR__ . '/../views/productos/index.php';
+    view('productos/index', $data);
 }
     
     public function ver() {
@@ -86,7 +86,7 @@ class ProductoController {
         'productosRelacionados' => $productosRelacionados
     ];
     
-    require_once __DIR__ . '/../views/productos/ver.php';
+    view('productos/ver', $data);
 }
 
     public function destacados() {

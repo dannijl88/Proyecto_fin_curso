@@ -1,7 +1,7 @@
 <?php 
 $title = $data['title'] ?? 'Detalles del Producto';
 $producto = $data['producto'] ?? null;
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 
 if (!$producto): ?>
     <section class="container py-5">
@@ -27,7 +27,7 @@ if (!$producto): ?>
                 <div class="product-gallery">
                     <!-- Imagen principal -->
                     <div class="main-image mb-3">
-                        <img src="/images/productos/<?= $producto['imagen'] ?>" 
+                        <img src="<?= BASE_URL ?>/public/images/productos/<?= $producto['imagen']?>" 
                             alt="<?= htmlspecialchars($producto['nombre']) ?>" 
                             class="img-fluid rounded shadow-sm" 
                             id="main-product-image"
@@ -36,7 +36,7 @@ if (!$producto): ?>
                     
                     <!-- Miniaturas -->
                     <div class="thumbnails d-flex gap-2">
-                        <img src="/images/productos/<?= $producto['imagen'] ?>" 
+                        <img src="<?= BASE_URL ?>/public/images/productos/<?= $producto['imagen']?>" 
                             alt="<?= htmlspecialchars($producto['nombre']) ?>" 
                             class="img-thumbnail active"
                             style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;"
@@ -142,7 +142,7 @@ if (!$producto): ?>
                                 <div class="card h-100 product-card">
                                     <!-- Imagen del producto -->
                                     <a href="<?= BASE_URL ?>?c=producto&a=ver&id=<?= $relacionado['id'] ?>">
-                                        <img src="/images/productos/<?= $relacionado['imagen'] ?>" 
+                                        <img src="<?= BASE_URL ?>/public/images/productos/<?= $relacionado['imagen']?>" 
                                             class="card-img-top" 
                                             alt="<?= htmlspecialchars($relacionado['nombre']) ?>"
                                             style="height: 200px; object-fit: cover;">
@@ -279,4 +279,4 @@ function actualizarContadorCarrito() {
 }
 </script>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

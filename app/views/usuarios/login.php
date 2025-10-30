@@ -2,10 +2,10 @@
 $title = $data['title'] ?? 'Login';
 $error = $data['error'] ?? '';
 $registro_exitoso = isset($_GET['registro']) && $_GET['registro'] === 'exitoso';
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
-<section class="login py-5">
+<section class="login py-5" style="min-height: 82vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -53,4 +53,4 @@ include '../app/views/layouts/header.php';
     </div>
 </section>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

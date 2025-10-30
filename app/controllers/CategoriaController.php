@@ -19,7 +19,7 @@ class CategoriaController {
             'categorias' => $categorias
         ];
         
-        require_once __DIR__ . '/../views/admin/categorias.php';
+        view('admin/categorias', $data);
     }
     
     public function crear() {
@@ -77,7 +77,7 @@ class CategoriaController {
             'categoria' => $categoria
         ];
         
-        require_once __DIR__ . '/../views/admin/editar_categoria.php';
+        view('admin/editar_categoria', $data);
     }
     
     public function eliminar() {

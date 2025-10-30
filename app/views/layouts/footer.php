@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <section class="col-md-6">
-                        <h3 class="h5">Tienda de Velas</h3>
+                        <h3 class="h5">Ignia</h3>
                         <p class="mb-0">Velas artesanales con los mejores aromas</p>
                     </section>
                     <section class="col-md-6 text-md-end">

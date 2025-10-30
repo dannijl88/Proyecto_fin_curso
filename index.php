@@ -1,12 +1,21 @@
 <?php
+// Punto de entrada PRINCIPAL - Raíz del proyecto
+
+// Mostrar errores temporalmente
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Definir constante de ruta base
+define('APP_ROOT', __DIR__);
+
 // Cargar configuración
-require_once __DIR__ . '/../app/config/config.php';
+require_once APP_ROOT . '/app/config/config.php';
 
 // Autoloader
 spl_autoload_register(function ($className) {
     $paths = [
-        __DIR__ . '/../app/controllers/',
-        __DIR__ . '/../app/models/'
+        APP_ROOT . '/app/controllers/',
+        APP_ROOT . '/app/models/'
     ];
     
     foreach ($paths as $path) {
@@ -27,7 +36,7 @@ $controller = ucfirst(strtolower($controllerName)) . 'Controller';
 $action = strtolower($action);
 
 // Ruta al archivo del controlador
-$controllerFile = __DIR__ . "/../app/controllers/$controller.php";
+$controllerFile = APP_ROOT . "/app/controllers/$controller.php";
 
 // Verificar si existe el controlador
 if (file_exists($controllerFile)) {

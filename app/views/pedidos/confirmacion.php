@@ -2,7 +2,7 @@
 $title = $data['title'] ?? 'Pedido Confirmado';
 $pedido = $data['pedido'] ?? [];
 $lineas_pedido = $data['lineas_pedido'] ?? [];
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
 <section class="confirmacion-pedido py-5">
@@ -63,4 +63,4 @@ include '../app/views/layouts/header.php';
     </div>
 </section>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

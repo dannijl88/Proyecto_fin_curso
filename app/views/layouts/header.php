@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Velas - <?= $title ?? 'Inicio' ?></title>
+    <title>Ignia - <?= $title ?? 'Inicio' ?></title>
     
     <!-- Bootstrap CDN -->
     <!-- Bootstrap 5 CDN -->
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="<?= BASE_URL ?>">
-                🕯️ Tienda de Velas
+                🕯️ Ignia
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

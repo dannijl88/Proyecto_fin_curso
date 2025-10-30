@@ -9,10 +9,10 @@ $datos_formulario = $_SESSION['datos_formulario'] ?? [];
 unset($_SESSION['errores_checkout']);
 unset($_SESSION['datos_formulario']);
 
-include '../app/views/layouts/header.php'; 
+include __DIR__ . '/../layouts/header.php';
 ?>
 
-<section class="checkout py-5">
+<section class="checkout py-5" style="min-height: 82vh;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -37,23 +37,23 @@ include '../app/views/layouts/header.php';
                                         <div class="col-md-6 mb-3">
                                             <label for="nombre" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="nombre" 
-                                                   value="<?= htmlspecialchars($usuario['nombre'] ?? '') ?>" 
-                                                   readonly>
+                                                value="<?= htmlspecialchars($usuario['nombre'] ?? '') ?>" 
+                                                readonly>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="email" 
-                                                   value="<?= htmlspecialchars($usuario['email'] ?? '') ?>" 
-                                                   readonly>
+                                                value="<?= htmlspecialchars($usuario['email'] ?? '') ?>" 
+                                                readonly>
                                         </div>
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label for="provincia" class="form-label">Provincia *</label>
                                         <input type="text" class="form-control <?= isset($errores['provincia']) ? 'is-invalid' : '' ?>" 
-                                               id="provincia" name="provincia" 
-                                               value="<?= htmlspecialchars($datos_formulario['provincia'] ?? '') ?>" 
-                                               required>
+                                            id="provincia" name="provincia" 
+                                            value="<?= htmlspecialchars($datos_formulario['provincia'] ?? '') ?>" 
+                                            required>
                                         <?php if (isset($errores['provincia'])): ?>
                                         <div class="invalid-feedback"><?= $errores['provincia'] ?></div>
                                         <?php endif; ?>
@@ -62,9 +62,9 @@ include '../app/views/layouts/header.php';
                                     <div class="mb-3">
                                         <label for="localidad" class="form-label">Localidad *</label>
                                         <input type="text" class="form-control <?= isset($errores['localidad']) ? 'is-invalid' : '' ?>" 
-                                               id="localidad" name="localidad" 
-                                               value="<?= htmlspecialchars($datos_formulario['localidad'] ?? '') ?>" 
-                                               required>
+                                            id="localidad" name="localidad" 
+                                            value="<?= htmlspecialchars($datos_formulario['localidad'] ?? '') ?>" 
+                                            required>
                                         <?php if (isset($errores['localidad'])): ?>
                                         <div class="invalid-feedback"><?= $errores['localidad'] ?></div>
                                         <?php endif; ?>
@@ -73,8 +73,8 @@ include '../app/views/layouts/header.php';
                                     <div class="mb-3">
                                         <label for="direccion" class="form-label">Dirección *</label>
                                         <textarea class="form-control <?= isset($errores['direccion']) ? 'is-invalid' : '' ?>" 
-                                                  id="direccion" name="direccion" rows="3" 
-                                                  required><?= htmlspecialchars($datos_formulario['direccion'] ?? '') ?></textarea>
+                                                id="direccion" name="direccion" rows="3" 
+                                                required><?= htmlspecialchars($datos_formulario['direccion'] ?? '') ?></textarea>
                                         <?php if (isset($errores['direccion'])): ?>
                                         <div class="invalid-feedback"><?= $errores['direccion'] ?></div>
                                         <?php endif; ?>
@@ -137,4 +137,4 @@ include '../app/views/layouts/header.php';
     </div>
 </section>
 
-<?php include '../app/views/layouts/footer.php'; ?>
+<?php include __DIR__ . '/../layouts/footer.php'; ?>
