@@ -79,3 +79,5 @@
 6.1. Enlaces
 
 [Enlaces y recursos de referencia]
+[APIs]
+[Documentación Externa]
