@@ -1,0 +1,10 @@
+site_name: Tienda Velas Ignia Docs
+nav:
+  - Inicio: index.md
+  - Introducción: introduccion.md
+  - Instalación: instalacion.md
+  - Uso: uso.md
+  - Arquitectura: arquitectura.md
+  - Conclusiones: conclusiones.md
+  - Referencias: referencias.md
+theme: readthedocs
