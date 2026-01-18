@@ -185,13 +185,13 @@ RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 ```
 ## Consideraciones de rendimiento
 ### Optimizaciones implementadas
-- **Consultas preparadas para reutilización
-- **Índices en claves foráneas de base de datos
-- **Cache de sesiones en servidor
-- **Minificación de assets CSS/JS
+- Consultas preparadas para reutilización
+- Índices en claves foráneas de base de datos
+- Cache de sesiones en servidor
+- Minificación de assets CSS/JS
 
 ### Posibles mejoras
-- **Implementación de cache de consultas frecuentes
-- **CDN para recursos estáticos
-- **Compresión GZIP de respuestas
-- **Optimización de imágenes automática
+- Implementación de cache de consultas frecuentes
+- CDN para recursos estáticos
+- Compresión GZIP de respuestas
+- Optimización de imágenes automática
