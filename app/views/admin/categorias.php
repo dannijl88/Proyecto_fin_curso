@@ -1,4 +1,9 @@
 <?php 
+
+if (empty($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'admin') {
+    header('Location: ' . BASE_URL . '/?c=usuario&a=login');
+    exit;
+}
 $title = 'Gestión de Categorías';
 $categorias = $data['categorias'] ?? [];
 include __DIR__ . '/../layouts/header.php';

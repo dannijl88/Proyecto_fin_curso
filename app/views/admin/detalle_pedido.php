@@ -1,4 +1,10 @@
 <?php 
+
+if (empty($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'admin') {
+    header('Location: ' . BASE_URL . '/?c=usuario&a=login');
+    exit;
+}
+
 $title = $data['title'] ?? 'Detalle del Pedido';
 $pedido = $data['pedido'] ?? null;
 $lineas_pedido = $data['lineas_pedido'] ?? [];

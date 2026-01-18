@@ -1,4 +1,9 @@
 <?php 
+
+if (empty($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'admin') {
+    header('Location: ' . BASE_URL . '/?c=usuario&a=login');
+    exit;
+}
 $title = $data['title'] ?? 'Gestión de Productos';
 $productos = $data['productos'] ?? [];
 include __DIR__ . '/../layouts/header.php';

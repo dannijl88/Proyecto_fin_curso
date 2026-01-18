@@ -3,11 +3,11 @@
 
 // Configuración
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'u202108071_proyectofinal');
-define('DB_USER', 'u202108071_dannijl88');
-define('DB_PASS', 'y&2SDDt+uY');
+define('DB_NAME', 'u792436979_bd_ignia');
+define('DB_USER', 'u792436979_dannijl88');
+define('DB_PASS', 'Vx=WsUg8m+');
 
-define('BASE_URL', 'https://proyectofinal.danijuan.com');
+define('BASE_URL', 'https://proyecto.danijuan.com');
 
 session_start();
 
