@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>4. Arquitectura - Tienda Velas Ignia Docs</title>
+    <title>Arquitectura - Tienda Velas Ignia Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "4. Arquitectura";
-        var mkdocs_page_input_path = "04-arquitectura.md";
+        var mkdocs_page_name = "Arquitectura";
+        var mkdocs_page_input_path = "arquitectura.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -40,31 +40,107 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../index.md">Inicio</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inicio</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../introduccion.md">Introducción</a>
+                <li class="toctree-l1"><a class="reference internal" href="../introduccion/">Introducción</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../instalacion.md">Instalación</a>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../uso.md">Uso</a>
+                <li class="toctree-l1"><a class="reference internal" href="../uso/">Uso</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Arquitectura</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#diagrama-de-componentes">Diagrama de componentes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#explicacion-tecnica">Explicación técnica</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#arquitectura-mvc-personalizada">Arquitectura MVC personalizada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#flujo-de-peticiones">Flujo de peticiones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tecnologias-utilizadas">Tecnologías utilizadas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#base-de-datos">Base de datos</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#diagrama-de-relaciones">Diagrama de relaciones</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#principales-tablas">Principales tablas</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#relaciones-clave">Relaciones clave</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#patrones-de-diseno-implementados">Patrones de diseño implementados</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#front-controller">Front Controller</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#singleton-database">Singleton (Database)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#session-state">Session State</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transaction-script">Transaction Script</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#decisiones-tecnicas-justificadas">Decisiones técnicas justificadas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#php-nativo-vs-framework">PHP nativo vs Framework</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mvc-personalizado-vs-framework-existente">MVC personalizado vs Framework existente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bootstrap-para-frontend">Bootstrap para frontend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jquery-para-javascript">jQuery para JavaScript</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mysql-como-sgbd">MySQL como SGBD</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#estructura-de-directorios">Estructura de directorios</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-servidor">Configuración del servidor</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requisitos-de-despliegue">Requisitos de despliegue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracion-recomendada">Configuración recomendada</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#consideraciones-de-rendimiento">Consideraciones de rendimiento</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#optimizaciones-implementadas">Optimizaciones implementadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#posibles-mejoras">Posibles mejoras</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../arquitectura.md">Arquitectura</a>
+                <li class="toctree-l1"><a class="reference internal" href="../conclusiones/">Conclusiones</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../conclusiones.md">Conclusiones</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="" href="../referencias.md">Referencias</a>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias</a>
                 </li>
               </ul>
       </div>
@@ -81,7 +157,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">4. Arquitectura</li>
+      <li class="breadcrumb-item active">Arquitectura</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -274,6 +350,10 @@ RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../uso/" class="btn btn-neutral float-left" title="Uso"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../conclusiones/" class="btn btn-neutral float-right" title="Conclusiones">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -295,6 +375,10 @@ RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../uso/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../conclusiones/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

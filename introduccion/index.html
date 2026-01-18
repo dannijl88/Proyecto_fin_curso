@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>2. Instalación - Tienda Velas Ignia Docs</title>
+    <title>Introducción - Tienda Velas Ignia Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "2. Instalaci\u00f3n";
-        var mkdocs_page_input_path = "02-instalacion.md";
+        var mkdocs_page_name = "Introducci\u00f3n";
+        var mkdocs_page_input_path = "introduccion.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -40,31 +40,39 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="" href="../index.md">Inicio</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inicio</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Introducción</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#objetivo-del-proyecto">Objetivo del proyecto</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#problema-que-resuelve">Problema que resuelve</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contexto">Contexto</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../introduccion.md">Introducción</a>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../instalacion.md">Instalación</a>
+                <li class="toctree-l1"><a class="reference internal" href="../uso/">Uso</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../uso.md">Uso</a>
+                <li class="toctree-l1"><a class="reference internal" href="../arquitectura/">Arquitectura</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../arquitectura.md">Arquitectura</a>
+                <li class="toctree-l1"><a class="reference internal" href="../conclusiones/">Conclusiones</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="" href="../conclusiones.md">Conclusiones</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="" href="../referencias.md">Referencias</a>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias</a>
                 </li>
               </ul>
       </div>
@@ -81,7 +89,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">2. Instalación</li>
+      <li class="breadcrumb-item active">Introducción</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -90,65 +98,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="2-instalacion">2. Instalación</h1>
-<h2 id="requisitos-del-sistema">Requisitos del sistema</h2>
+                <h1 id="1-introduccion">1. Introducción</h1>
+<h2 id="objetivo-del-proyecto">Objetivo del proyecto</h2>
+<p>Desarrollar una tienda online completa de venta de velas artesanales con panel de administración. El sistema permite gestionar productos, procesar pedidos y administrar usuarios con diferentes roles.</p>
+<h2 id="problema-que-resuelve">Problema que resuelve</h2>
+<p>Pequeñas empresas de velas artesanales necesitan una plataforma accesible para vender sus productos online sin depender de marketplaces externos. La solución ofrece:</p>
 <ul>
-<li>PHP 8.2 o superior</li>
-<li>MySQL 8.0 o superior (versión 110803)</li>
-<li>Extensiones PHP: PDO, MySQLi, session</li>
-<li>Servidor web (Apache/Nginx)</li>
-<li>50MB espacio en disco mínimo</li>
+<li>Catálogo digital de productos con stock actualizado</li>
+<li>Carrito de compras y procesamiento de pedidos</li>
+<li>Panel de control para gestionar inventario y ventas</li>
+<li>Sistema de autenticación para clientes y administradores</li>
 </ul>
-<h2 id="pasos-de-instalacion">Pasos de instalación</h2>
-<h3 id="1-clonar-repositorio">1. Clonar repositorio</h3>
-<pre><code class="language-bash">git clone https://github.com/tuusuario/tienda-velas.git
-cd tienda-velas
-</code></pre>
-<h3 id="2-configurar-base-de-datos">2. Configurar base de datos</h3>
-<p>-- Importar estructura y datos iniciales
-mysql -u usuario -p bd_tienda &lt; bd_proyecto.sql
-Archivo SQL incluye:
-- Estructura de tablas
-- Datos de ejemplo
-- Relaciones y claves foráneas
-- Usuarios demo (admin/cliente)</p>
-<h3 id="3-configurar-conexion">3. Configurar conexión</h3>
-<p>Editar archivo de configuración principal (config.php o similar):</p>
-<pre><code class="language-php">define('DB_HOST', 'localhost');
-define('DB_NAME', 'bd_tienda');
-define('DB_USER', 'usuario');
-define('DB_PASS', 'contraseña');
-define('BASE_URL', 'http://localhost/tienda-velas/public');
-</code></pre>
-<h3 id="4-configurar-permisos-de-carpetas">4. Configurar permisos de carpetas</h3>
-<h1 id="permisos-para-subida-de-imagenes">Permisos para subida de imágenes</h1>
-<p>chmod 755 public/images/
-chmod 755 public/images/productos/</p>
-<h3 id="5-acceder-a-la-aplicacion">5. Acceder a la aplicación</h3>
-<ul>
-<li>URL principal: http://localhost/tienda-velas/public/</li>
-<li>Panel admin: http://localhost/tienda-velas/public/?c=admin</li>
-<li>Credenciales demo admin: admin@email.com / admin123</li>
-</ul>
-<h2 id="variables-de-entorno">Variables de entorno</h2>
-<ul>
-<li>DB_HOST: Servidor de base de datos</li>
-<li>DB_NAME: Nombre de la base de datos  </li>
-<li>DB_USER: Usuario MySQL</li>
-<li>DB_PASS: Contraseña MySQL</li>
-<li>BASE_URL: URL base de la aplicación</li>
-</ul>
-<h2 id="solucion-de-problemas">Solución de problemas</h2>
-<ul>
-<li>Error de conexión a BD: Verificar credenciales en config.php</li>
-<li>Imágenes no se suben: Verificar permisos en public/images/productos/</li>
-<li>URLs incorrectas: Ajustar BASE_URL según entorno</li>
-<li>Archivos no encontrados: Verificar rutas relativas/absolutas</li>
-<li>Sesiones no funcionan: Verificar configuración PHP session.save_path</li>
-</ul>
+<h2 id="contexto">Contexto</h2>
+<p>Proyecto final del ciclo formativo de Desarrollo de Aplicaciones Web (DAW). Demuestra competencias en desarrollo backend, frontend, bases de datos y despliegue en producción.</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Inicio"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../instalacion/" class="btn btn-neutral float-right" title="Instalación">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -170,6 +139,10 @@ chmod 755 public/images/productos/</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../instalacion/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
