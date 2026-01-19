@@ -168,44 +168,7 @@
               
                 <h1 id="4-arquitectura">4. Arquitectura</h1>
 <h2 id="diagrama-de-componentes">Diagrama de componentes</h2>
-<p>┌─────────────────────────────────────────┐
-│ Capa de Presentación │
-│ ┌─────────┐ ┌─────────┐ ┌─────────┐ │
-│ │ Vistas │ │ CSS/ │ │ JS │ │
-│ │ PHP │ │ Bootstrap│ │jQuery/AJAX││
-│ └─────────┘ └─────────┘ └─────────┘ │
-└─────────────────────────────────────────┘
-│
-┌─────────────────────────────────────────┐
-│ Capa de Control │
-│ ┌───────────────────────────────────┐ │
-│ │ Controladores (Controllers) │ │
-│ │ • ProductoController │ │
-│ │ • CarritoController │ │
-│ │ • AdminController │ │
-│ │ • UsuarioController │ │
-│ └───────────────────────────────────┘ │
-└─────────────────────────────────────────┘
-│
-┌─────────────────────────────────────────┐
-│ Capa de Lógica │
-│ ┌───────────────────────────────────┐ │
-│ │ Modelos (Models) │ │
-│ │ • ProductoModel │ │
-│ │ • PedidoModel │ │
-│ │ • UsuarioModel │ │
-│ │ • Database (Conexión) │ │
-│ └───────────────────────────────────┘ │
-└─────────────────────────────────────────┘
-│
-┌─────────────────────────────────────────┐
-│ Capa de Datos │
-│ ┌───────────────────────────────────┐ │
-│ │ Base de Datos MySQL │ │
-│ │ • Tablas: productos, usuarios, │ │
-│ │ pedidos, categorías │ │
-│ └───────────────────────────────────┘ │
-└─────────────────────────────────────────┘</p>
+<p><img alt="Diagrama de componentes" src="../imagenes/diagrama2.png" /></p>
 <h2 id="explicacion-tecnica">Explicación técnica</h2>
 <h3 id="arquitectura-mvc-personalizada">Arquitectura MVC personalizada</h3>
 <p>El proyecto implementa una arquitectura Modelo-Vista-Controlador (MVC) desarrollada desde cero:</p>
@@ -260,13 +223,7 @@
 </ul>
 <h3 id="base-de-datos">Base de datos</h3>
 <h4 id="diagrama-de-relaciones">Diagrama de relaciones</h4>
-<p>usuarios ──────┐
-│ │
-│ │
-categorias pedidos
-│ │
-│ │
-productos ←── lineas_pedidos</p>
+<p><img alt="Diagrama de relaciones" src="../imagenes/diagramaER.png" /></p>
 <h4 id="principales-tablas">Principales tablas</h4>
 <ul>
 <li><strong>usuarios</strong>: Datos de clientes y administradores</li>
@@ -303,20 +260,7 @@ productos ←── lineas_pedidos</p>
 <h3 id="mysql-como-sgbd">MySQL como SGBD</h3>
 <p>Relacional, ampliamente usado y suficiente para necesidades del proyecto.</p>
 <h2 id="estructura-de-directorios">Estructura de directorios</h2>
-<p>raiz/
-├── app/ # Código de aplicación
-│ ├── config/ # Configuración
-│ ├── controllers/ # Controladores
-│ ├── models/ # Modelos
-│ └── views/ # Vistas organizadas por módulo
-│
-├── public/ # Punto de entrada público
-│ ├── css/ # Estilos
-│ ├── images/ # Imágenes
-│ ├── js/ # JavaScript
-│ └── index.php # Front controller
-│
-└── assets/ # Recursos adicionales</p>
+<p><img alt="Estructura de directorios" src="../imagenes/diagrama1.png" /></p>
 <h2 id="configuracion-del-servidor">Configuración del servidor</h2>
 <h3 id="requisitos-de-despliegue">Requisitos de despliegue</h3>
 <ul>
