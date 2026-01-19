@@ -2,6 +2,7 @@
 
 ## Diagrama de componentes
 
+![Diagrama de componentes](imagenes/diagrama2.png)
 
 ## Explicación técnica
 
@@ -62,13 +63,8 @@ El proyecto implementa una arquitectura Modelo-Vista-Controlador (MVC) desarroll
 ### Base de datos
 
 #### Diagrama de relaciones
-usuarios ──────┐
-│ │
-│ │
-categorias pedidos
-│ │
-│ │
-productos ←── lineas_pedidos
+
+![Diagrama de relaciones](imagenes/diagramaER.png)
 
 #### Principales tablas
 - **usuarios**: Datos de clientes y administradores
@@ -115,20 +111,8 @@ Compatibilidad amplia y simplificación de código AJAX.
 Relacional, ampliamente usado y suficiente para necesidades del proyecto.
 
 ## Estructura de directorios
-raiz/
-├── app/ # Código de aplicación
-│ ├── config/ # Configuración
-│ ├── controllers/ # Controladores
-│ ├── models/ # Modelos
-│ └── views/ # Vistas organizadas por módulo
-│
-├── public/ # Punto de entrada público
-│ ├── css/ # Estilos
-│ ├── images/ # Imágenes
-│ ├── js/ # JavaScript
-│ └── index.php # Front controller
-│
-└── assets/ # Recursos adicionales
+
+![Estructura de directorios](imagenes/diagrama1.png)
 
 ## Configuración del servidor
 
