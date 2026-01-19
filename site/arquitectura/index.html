@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Arquitectura - Tienda Velas Ignia Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Arquitectura";
+        var mkdocs_page_input_path = "arquitectura.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Tienda Velas Ignia Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inicio</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../introduccion/">Introducción</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../instalacion/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../uso/">Uso</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Arquitectura</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#diagrama-de-componentes">Diagrama de componentes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#explicacion-tecnica">Explicación técnica</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#arquitectura-mvc-personalizada">Arquitectura MVC personalizada</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#flujo-de-peticiones">Flujo de peticiones</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tecnologias-utilizadas">Tecnologías utilizadas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#seguridad">Seguridad</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#base-de-datos">Base de datos</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#diagrama-de-relaciones">Diagrama de relaciones</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#principales-tablas">Principales tablas</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#relaciones-clave">Relaciones clave</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#patrones-de-diseno-implementados">Patrones de diseño implementados</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#front-controller">Front Controller</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#singleton-database">Singleton (Database)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#session-state">Session State</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transaction-script">Transaction Script</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#decisiones-tecnicas-justificadas">Decisiones técnicas justificadas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#php-nativo-vs-framework">PHP nativo vs Framework</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mvc-personalizado-vs-framework-existente">MVC personalizado vs Framework existente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bootstrap-para-frontend">Bootstrap para frontend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jquery-para-javascript">jQuery para JavaScript</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mysql-como-sgbd">MySQL como SGBD</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#estructura-de-directorios">Estructura de directorios</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-servidor">Configuración del servidor</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requisitos-de-despliegue">Requisitos de despliegue</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracion-recomendada">Configuración recomendada</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#consideraciones-de-rendimiento">Consideraciones de rendimiento</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#optimizaciones-implementadas">Optimizaciones implementadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#posibles-mejoras">Posibles mejoras</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../conclusiones/">Conclusiones</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../referencias/">Referencias</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Tienda Velas Ignia Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Arquitectura</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="4-arquitectura">4. Arquitectura</h1>
+<h2 id="diagrama-de-componentes">Diagrama de componentes</h2>
+<p><img alt="Diagrama de componentes" src="../imagenes/diagrama2.png" /></p>
+<h2 id="explicacion-tecnica">Explicación técnica</h2>
+<h3 id="arquitectura-mvc-personalizada">Arquitectura MVC personalizada</h3>
+<p>El proyecto implementa una arquitectura Modelo-Vista-Controlador (MVC) desarrollada desde cero:</p>
+<p><strong>Modelos (Models)</strong>
+- Ubicación: <code>app/models/</code>
+- Responsabilidad: Acceso a datos y lógica de negocio
+- Conexión única a base de datos mediante clase Database
+- Ejemplos: ProductoModel, UsuarioModel, PedidoModel</p>
+<p><strong>Vistas (Views)</strong>
+- Ubicación: <code>app/views/</code>
+- Responsabilidad: Presentación de datos al usuario
+- Separadas por funcionalidad: admin, productos, carrito, usuarios
+- Layouts reutilizables en <code>app/views/layouts/</code></p>
+<p><strong>Controladores (Controllers)</strong>
+- Ubicación: <code>app/controllers/</code>
+- Responsabilidad: Intermediario entre modelos y vistas
+- Procesan peticiones HTTP y preparan datos
+- Ejemplos: ProductoController, AdminController</p>
+<h3 id="flujo-de-peticiones">Flujo de peticiones</h3>
+<ol>
+<li><strong>Entrada:</strong> Usuario accede a <code>public/index.php?c=producto&amp;a=index</code></li>
+<li><strong>Enrutamiento:</strong> <code>index.php</code> identifica controlador y acción</li>
+<li><strong>Controlador:</strong> Instancia <code>ProductoController</code> y ejecuta método <code>index()</code></li>
+<li><strong>Modelo:</strong> Controlador consulta <code>ProductoModel</code> para obtener datos</li>
+<li><strong>Vista:</strong> Controlador pasa datos a vista <code>productos/index.php</code></li>
+<li><strong>Salida:</strong> Vista renderizada con datos se envía al navegador</li>
+</ol>
+<h2 id="tecnologias-utilizadas">Tecnologías utilizadas</h2>
+<h3 id="backend">Backend</h3>
+<ul>
+<li><strong>PHP 8.2</strong>: Lenguaje principal del servidor</li>
+<li><strong>Arquitectura MVC</strong>: Patrón de diseño implementado manualmente</li>
+<li><strong>MySQL 8.0</strong>: Sistema de gestión de bases de datos</li>
+<li><strong>Sesiones PHP</strong>: Gestión de estado de usuario y carrito</li>
+<li><strong>PDO</strong>: Interfaz para acceso a base de datos</li>
+</ul>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li><strong>Bootstrap 5</strong>: Framework CSS para diseño responsive</li>
+<li><strong>JavaScript</strong>: Interactividad del lado del cliente</li>
+<li><strong>jQuery</strong>: Simplificación de manipulaciones DOM</li>
+<li><strong>AJAX</strong>: Peticiones asíncronas para carrito y validaciones</li>
+<li><strong>HTML5/CSS3</strong>: Estándares web modernos</li>
+</ul>
+<h3 id="seguridad">Seguridad</h3>
+<ul>
+<li><strong>Validación server-side</strong>: En controladores y modelos</li>
+<li><strong>Validación client-side</strong>: En formularios con JavaScript</li>
+<li><strong>Protección contra XSS</strong>: <code>htmlspecialchars()</code> en salida de datos</li>
+<li><strong>Protección contra SQL Injection</strong>: Consultas preparadas con PDO</li>
+<li><strong>Control de acceso</strong>: Verificación de roles en sesiones</li>
+</ul>
+<h3 id="base-de-datos">Base de datos</h3>
+<h4 id="diagrama-de-relaciones">Diagrama de relaciones</h4>
+<p><img alt="Diagrama de relaciones" src="../imagenes/diagramaER.png" /></p>
+<h4 id="principales-tablas">Principales tablas</h4>
+<ul>
+<li><strong>usuarios</strong>: Datos de clientes y administradores</li>
+<li><strong>productos</strong>: Catálogo completo de velas</li>
+<li><strong>categorias</strong>: Clasificación de productos</li>
+<li><strong>pedidos</strong>: Encabezados de pedidos</li>
+<li><strong>lineas_pedidos</strong>: Detalle de productos en cada pedido</li>
+</ul>
+<h4 id="relaciones-clave">Relaciones clave</h4>
+<ul>
+<li><code>productos.categoria_id</code> → <code>categorias.id</code></li>
+<li><code>pedidos.usuario_id</code> → <code>usuarios.id</code></li>
+<li><code>lineas_pedidos.pedido_id</code> → <code>pedidos.id</code></li>
+<li><code>lineas_pedidos.producto_id</code> → <code>productos.id</code></li>
+</ul>
+<h2 id="patrones-de-diseno-implementados">Patrones de diseño implementados</h2>
+<h3 id="front-controller">Front Controller</h3>
+<p>Todas las peticiones pasan por <code>public/index.php</code> que actúa como controlador frontal.</p>
+<h3 id="singleton-database">Singleton (Database)</h3>
+<p>La clase Database implementa patrón Singleton para una única instancia de conexión.</p>
+<h3 id="session-state">Session State</h3>
+<p>Uso de sesiones PHP para mantener estado de usuario y carrito entre peticiones.</p>
+<h3 id="transaction-script">Transaction Script</h3>
+<p>Patrón utilizado en procesamiento de pedidos para mantener integridad de datos.</p>
+<h2 id="decisiones-tecnicas-justificadas">Decisiones técnicas justificadas</h2>
+<h3 id="php-nativo-vs-framework">PHP nativo vs Framework</h3>
+<p>Se eligió PHP nativo para demostrar comprensión profunda del lenguaje y arquitectura web.</p>
+<h3 id="mvc-personalizado-vs-framework-existente">MVC personalizado vs Framework existente</h3>
+<p>Desarrollo manual de MVC para aprendizaje de patrones arquitectónicos.</p>
+<h3 id="bootstrap-para-frontend">Bootstrap para frontend</h3>
+<p>Elegido por rapidez de desarrollo y responsividad automática.</p>
+<h3 id="jquery-para-javascript">jQuery para JavaScript</h3>
+<p>Compatibilidad amplia y simplificación de código AJAX.</p>
+<h3 id="mysql-como-sgbd">MySQL como SGBD</h3>
+<p>Relacional, ampliamente usado y suficiente para necesidades del proyecto.</p>
+<h2 id="estructura-de-directorios">Estructura de directorios</h2>
+<p><img alt="Estructura de directorios" src="../imagenes/diagrama1.png" /></p>
+<h2 id="configuracion-del-servidor">Configuración del servidor</h2>
+<h3 id="requisitos-de-despliegue">Requisitos de despliegue</h3>
+<ul>
+<li><strong>PHP 8.2+</strong> con extensiones: pdo_mysql, mysqli, session</li>
+<li><strong>MySQL 8.0+</strong> con InnoDB como motor de almacenamiento</li>
+<li><strong>Apache</strong> con mod_rewrite habilitado o <strong>Nginx</strong> con configuración similar</li>
+<li><strong>Permisos de escritura</strong> en <code>public/images/productos/</code></li>
+</ul>
+<h3 id="configuracion-recomendada">Configuración recomendada</h3>
+<pre><code class="language-apache"># Apache .htaccess (en public/)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</code></pre>
+<h2 id="consideraciones-de-rendimiento">Consideraciones de rendimiento</h2>
+<h3 id="optimizaciones-implementadas">Optimizaciones implementadas</h3>
+<ul>
+<li>Consultas preparadas para reutilización</li>
+<li>Índices en claves foráneas de base de datos</li>
+<li>Cache de sesiones en servidor</li>
+<li>Minificación de assets CSS/JS</li>
+</ul>
+<h3 id="posibles-mejoras">Posibles mejoras</h3>
+<ul>
+<li>Implementación de cache de consultas frecuentes</li>
+<li>CDN para recursos estáticos</li>
+<li>Compresión GZIP de respuestas</li>
+<li>Optimización de imágenes automática</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../uso/" class="btn btn-neutral float-left" title="Uso"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../conclusiones/" class="btn btn-neutral float-right" title="Conclusiones">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../uso/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../conclusiones/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

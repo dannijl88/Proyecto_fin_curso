@@ -7,4 +7,4 @@ nav:
   - Arquitectura: arquitectura.md
   - Conclusiones: conclusiones.md
   - Referencias: referencias.md
-theme: readthedocs
+theme: material
