@@ -178,4 +178,39 @@ public function getEstadisticas() {
         return [];
     }
 }
+
+public function getAllConDetalles() {
+    try {
+        // Obtener todos los pedidos con datos de usuario
+        $stmt = $this->db->query("
+            SELECT p.*, u.nombre as cliente_nombre, u.email 
+            FROM pedidos p 
+            JOIN usuarios u ON p.usuario_id = u.id 
+            ORDER BY p.fecha DESC
+        ");
+        $pedidos = $stmt->fetchAll();
+        
+        // Para cada pedido, obtener sus líneas
+        foreach($pedidos as &$pedido) {
+            $stmtLineas = $this->db->prepare("
+                SELECT l.*, pr.nombre as producto_nombre, pr.precio 
+                FROM lineas_pedidos l 
+                JOIN productos pr ON l.producto_id = pr.id 
+                WHERE l.pedido_id = ?
+            ");
+            $stmtLineas->execute([$pedido['id']]);
+            $pedido['lineas'] = $stmtLineas->fetchAll();
+            
+            // Calcular subtotales si no existen
+            foreach($pedido['lineas'] as &$linea) {
+                $linea['subtotal'] = $linea['precio'] * $linea['unidades'];
+            }
+        }
+        
+        return $pedidos;
+    } catch (PDOException $e) {
+        error_log("Error en getAllConDetalles: " . $e->getMessage());
+        return [];
+    }
+}
 }

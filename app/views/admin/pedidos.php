@@ -57,6 +57,11 @@ include __DIR__ . '/../layouts/header.php';
         <div class="col-md-9" style="min-height: 78vh;">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="h3 mb-0">Gestión de Pedidos</h1>
+                <a href="<?= BASE_URL ?>?c=admin&a=generarInformePDF" 
+                   class="btn btn-success" 
+                   target="_blank">
+                    📄 Generar Informe PDF
+                </a>
             </div>
 
             <!-- Mensajes de feedback -->

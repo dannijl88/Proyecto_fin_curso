@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../libraries/fpdf.php';
 class AdminController {
     private $productoModel;
     private $usuarioModel;
@@ -250,6 +251,64 @@ public function actualizarEstadoPedido() {
     }
     
     header('Location: ' . BASE_URL . '?c=admin&a=pedidos');
+    exit;
+}
+
+public function generarInformePDF() {
+    // Limpiar cualquier salida previa que pueda corromper el PDF
+    if (ob_get_length()) ob_clean();
+
+    require_once __DIR__ . '/../libraries/fpdf.php';
+
+    $pedidos = $this->pedidoModel->getAllConDetalles();
+
+    $pdf = new FPDF();
+    $pdf->AddPage();
+
+    // Título
+    $pdf->SetFont('Helvetica', 'B', 16);
+    $pdf->Cell(190, 10, 'Informe de Pedidos', 0, 1, 'C');
+    $pdf->SetFont('Helvetica', '', 10);
+    $pdf->Cell(190, 6, 'Fecha: ' . date('d/m/Y H:i'), 0, 1);
+    $pdf->Ln(8);
+
+    // Cabecera tabla
+    $pdf->SetFont('Helvetica', 'B', 10);
+    $pdf->SetFillColor(139, 115, 85);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->Cell(20,  8, 'Pedido',   1, 0, 'C', true);
+    $pdf->Cell(50,  8, 'Cliente',  1, 0, 'C', true);
+    $pdf->Cell(30,  8, 'Fecha',    1, 0, 'C', true);
+    $pdf->Cell(50,  8, 'Productos',1, 0, 'C', true);
+    $pdf->Cell(40,  8, 'Total',    1, 1, 'C', true);
+
+    // Filas
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Helvetica', '', 9);
+    $totalGeneral = 0;
+    $fillRow = false;
+
+    foreach ($pedidos as $pedido) {
+        $pdf->SetFillColor(245, 240, 235);
+        $numProductos = count($pedido['lineas']);
+
+        $pdf->Cell(20,  8, '#' . $pedido['id'], 1, 0, 'C', $fillRow);
+        $pdf->Cell(50,  8, substr($pedido['cliente_nombre'], 0, 25), 1, 0, 'L', $fillRow);
+        $pdf->Cell(30,  8, date('d/m/Y', strtotime($pedido['fecha'])), 1, 0, 'C', $fillRow);
+        $pdf->Cell(50,  8, $numProductos . ' producto(s)', 1, 0, 'C', $fillRow);
+        $pdf->Cell(40,  8, number_format($pedido['coste'], 2) . ' EUR', 1, 1, 'R', $fillRow);
+
+        $totalGeneral += $pedido['coste'];
+        $fillRow = !$fillRow; // filas alternadas
+    }
+
+    // Total general
+    $pdf->Ln(5);
+    $pdf->SetFont('Helvetica', 'B', 11);
+    $pdf->Cell(190, 8, 'Total General: ' . number_format($totalGeneral, 2) . ' EUR', 0, 1, 'R');
+
+    // Enviar al navegador
+    $pdf->Output('I', 'informe_pedidos_' . date('Ymd') . '.pdf');
     exit;
 }
 }
